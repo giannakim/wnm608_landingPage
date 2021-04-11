@@ -110,6 +110,23 @@ p {
 		color: black;
 	}
 
+	.nav-crumbs a {
+	display: inline-block;
+	}
+
+	.nav-crumbs .active a,
+	.nav-crumbs a:hover {
+	background-color: transparent;
+	color: inherit;
+	text-decoration: underline;
+
+	}
+
+	.nav-crumbs li:not(:first-child)::before {
+	content:'|';
+	}
+
+
 
 .nav-material ul,	
 .nav-crumbs ul,
@@ -398,7 +415,7 @@ p {
     font-size: 17px;
     font-weight: 400;
     -webkit-appearance: none;
-    color: #B0B0B0;
+    color: var(--color-main-dark);
     width: 100%;
     border-bottom: 1px solid var(--color-main-dark);
     outline:0;
