@@ -1,0 +1,4 @@
+[04-Apr-2021 05:03:40 UTC] PHP Warning:  include(../parts/meta.php): failed to open stream: No such file or directory in /home/tstholhjxh3c/public_html/wnm608/kim.gianna/product_list.php on line 9
+[04-Apr-2021 05:03:40 UTC] PHP Warning:  include(): Failed opening '../parts/meta.php' for inclusion (include_path='.:/opt/alt/php73/usr/share/pear') in /home/tstholhjxh3c/public_html/wnm608/kim.gianna/product_list.php on line 9
+[04-Apr-2021 05:03:40 UTC] PHP Warning:  include(../parts/navbar.php): failed to open stream: No such file or directory in /home/tstholhjxh3c/public_html/wnm608/kim.gianna/product_list.php on line 14
+[04-Apr-2021 05:03:40 UTC] PHP Warning:  include(): Failed opening '../parts/navbar.php' for inclusion (include_path='.:/opt/alt/php73/usr/share/pear') in /home/tstholhjxh3c/public_html/wnm608/kim.gianna/product_list.php on line 14
