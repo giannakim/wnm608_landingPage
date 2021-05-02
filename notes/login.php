@@ -14,8 +14,8 @@
 	<?php include "../parts/navbar.php"; ?>
 
 	<div class="container">
-		<div class="card soft">
-			<h2>Login</h2>
+		<div class="card medium">
+			<h2>LOGIN</h2>
 		</div>
 	</div>
 

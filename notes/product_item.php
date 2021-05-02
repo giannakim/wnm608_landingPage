@@ -1,4 +1,19 @@
-<!DOCTYPE html>
+<?php 
+
+include_once "../lib/php/functions.php";
+
+$product = makeQuery(makeConn(),"SELECT * FROM `products` WHERE `id` =".$_GET['id'])[0];
+
+
+$images = explode(",", $product->images);
+
+$image_elements = array_reduce($images,function($r,$o){
+	return $r. "<img src='img/thumbnail/$o'>";
+});
+
+//print_p($_SESSION);
+
+?><!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -8,61 +23,79 @@
 
 	<?php include "../parts/meta.php"; ?>
 
+	<script src="js/product_thumbs.js"></script>
+
 </head>
 <body>
 	
 	<?php include "../parts/navbar.php"; ?>
 
-	<div class="container" style="margin-top: 70px;">
-		<div class="" style="float: left; margin: 0 35px 0 20%;">
-			<img src="https://via.placeholder.com/400x400?text=product" style="height: 32em;">
-		</div>
 
-		<div class="" style="">
+	<div class="container">
+			<div class="grid gap">
+				<div class="col-xs-12 col-md-6">
+					<div class="card soft">
 
-			<?php
-				$id = $_GET['id'];
-				$price = $_GET['price'];
-				if($id==1){
-					echo "<h2>Product Number $id</h2>";
-					echo "<p>Description: This is description $id</p>";
-					echo "<div class='form-control'><button type='button' class='form-button'>Add to Cart - $$price</button></div>";
-				} 
-				elseif($id==2){
-					echo "<h2>Product Number $id</h2>";
-					echo "<p>Description: This is description $id</p>";
-					echo "<div class='form-control'><button type='button' class='form-button'>Add to Cart - $$price</button></div>";
-				}
-				elseif($id==3){
-					echo "<h2>Product Number $id</h2>";
-					echo "<p>Description: This is description $id</p>";
-					echo "<div class='form-control'><button type='button' class='form-button'>Add to Cart - $$price</button></div>";
-				}
-				elseif($id==4){
-					echo "<h2>Product Number $id</h2>";
-					echo "<p>Description: This is description $id</p>";
-					echo "<div class='form-control'><button type='button' class='form-button'>Add to Cart - $$price</button></div>";
-				}
-				elseif($id==5){
-					echo "<h2>Product Number $id</h2>";
-					echo "<p>Description: This is description $id</p>";
-					echo "<div class='form-control'><button type='button' class='form-button'>Add to Cart - $$price</button></div>";
-				}
-				elseif($id==6){
-					echo "<h2>Product Number $id</h2>";
-					echo "<p>Description: This is description $id</p>";
-					echo "<div class='form-control'><button type='button' class='form-button'>Add to Cart - $$price</button></div>";
-				}
-				elseif($id==7){
-					echo "<h2>Product Number $id</h2>";
-					echo "<p>Description: This is description $id</p>";
-					echo "<div class='form-control'><button type='button' class='form-button'>Add to Cart - $$price</button></div>";
-				}
-			?>
+						<div class="images-main">
+							<img src="img/thumbnail/<?= $product->thumbnail ?>">
+						</div>
 
-		</div>
+						<div class="images-thumbs">
+							<?= $image_elements ?>
+						</div>
+					</div>
+				</div>
 
+				<div class="col-xs-12 col-md-5">
+					<form class="card medium" method="post" action="notes/cart_actions.php?action=add-to-cart">
 
+						<input type="hidden" name="product-id" value="<?= $product->id ?>">
+
+							<div class="card-section">
+								<h2 class="product-name"><?= $product->name ?></h2>
+								<div class="product-price">&dollar;<?= $product->price ?></div>
+							</div>
+						
+
+							<div class="card-section">
+									<label for="product-amount" class="form-label">Amount</label>
+									<div class="form-select" id="product-amount">
+										<select id="product-amount" name="product-amount">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+											<option>6</option>
+											<option>7</option>
+											<option>8</option>
+											<option>9</option>
+											<option>10</option>
+										</select>
+									</div>
+							</div>
+
+							<div class="card-section">
+								<label for="product-color" class="form-label">Color</label>
+								<div class="form-select">
+									<select id="product-color" name="product-color">
+										<option>red</option>
+										<option>green</option>
+									</select>
+								</div>
+							</div>
+
+						<div class="card-section">
+							<input type="submit" class="form-button" value="Add To Cart">
+							<br><br>
+							
+							<p><?= $product->description ?></p>
+						</div>
+					</form>
+				</div>
+			</div>
+			
+		
 	</div>
 
 

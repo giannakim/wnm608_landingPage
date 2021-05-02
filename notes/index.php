@@ -1,3 +1,8 @@
+<?php
+
+include_once "../lib/php/functions.php";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,47 +20,40 @@
 
 
 	<div class="container">
-		<div class="card ad">
-			<h2>See more fragrances inspired by Seoul, a dynamic city.</h2>
-		</div>
-	
-		<div class="grid gap">
+		
+			<div class="view-window" style="background-image: url('img/main.jpg');">
+					<div class="title-center">Scents inspired by Seoul, a dynamic city</div>
+			</div>
+		
+		
 			<div class="col-xs-12 col-md-3">
 				<figure class="figure product newItem">
 					<h1>New Product</h1>
 				</figure>
-			</div>
 
-			<div class="col-xs-12 col-md-3">
-				<figure class="figure product">
-				<img src="https://via.placeholder.com/400x400?text=product">
-				<figcaption>
-					<div>Product Name</div>
-					<div>$45.00</div>
-				</figcaption>
-				</figure>
-			</div>
+				
+				<?php 
 
-			<div class="col-xs-12 col-md-3">
-				<figure class="figure product">
-				<img src="https://via.placeholder.com/400x400?text=product">
-				<figcaption>
-					<div>Product Name</div>
-					<div>$45.00</div>
-				</figcaption>
-				</figure>
-			</div>
+				include_once "../lib/php/functions.php";
+				include_once "../parts/templates.php";
+				$result = makeQuery(
+				 	makeConn(),
+					"
+					SELECT *
+					FROM `products`
+					ORDER BY `date_create` DESC
+					LIMIT 3
+					"
+				);
 
-			<div class="col-xs-12 col-md-3">
-				<figure class="figure product">
-				<img src="https://via.placeholder.com/400x400?text=product">
-				<figcaption>
-					<div>Product Name</div>
-					<div>$45.00</div>
-				</figcaption>
-				</figure>
-			</div>
-		</div>
+				echo "<div class='productlist grid gap'>",array_reduce($result,'productListTemplate'),"</div>";
+
+				?>
+			</div>	
+			
+
+			
+		
 	</div>
 
 
