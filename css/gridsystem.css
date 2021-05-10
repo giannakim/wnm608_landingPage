@@ -12,6 +12,10 @@
 	gap:var(--grid-gap);
 }
 
+.productlist.grid.gap {
+	color: var(--color-main-dark);
+}
+
 .col-1 { grid-column: span 1; }
 .col-2 { grid-column: span 2; }
 .col-3 { grid-column: span 3; }

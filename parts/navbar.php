@@ -16,7 +16,7 @@ include_once "../lib/php/functions.php";
 			<nav class="nav nav-flex flex-none">
 				<ul>
 					<li><a href="notes/product_list.php">shop</a></li>
-					<li><a href="notes/#">search</a></li>
+					
 					<li><a href="notes/login.php">login</a></li>
 					<li><a href="notes/cart.php">
 					<span>cart</span>

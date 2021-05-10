@@ -401,7 +401,7 @@ p {
 }
 
 .figure.product.kinds h3 {
-	font-color: var(--color-main-dark);
+	color: var(--color-main-dark);
 	font-family: "Degular", sans-serif;
 }
 
@@ -414,10 +414,15 @@ p {
 .productlist a {
 	text-decoration: none;
 	font-weight: initial;
+
+}
+
+.productlist {
+	color: var(--color-main-dark);
 }
 
 .product.figure:hover {
-	border-top: 1px solid #69EB1E;
+	border: 1px solid var(--color-main-dark);
 }
 
 .product-price {
@@ -465,11 +470,21 @@ p {
     border-width: 0;
     font: inherit;
     -webkit-appearance: none;
-    color: inherit;
+    ]
     width: 100%;
     outline:0;
+    color:var(--color-main-dark);
     
 }
+
+.hotdog {
+ 	background-color: var(--color-neutral-light);
+ 	border: 1px solid var(--color-main-dark);
+ 	border-radius: 2em;
+ 	width: 20%;
+ 	padding: 0.5em 1.2em;
+ 	display: flex;
+ }
 
 
 .form-input {
@@ -524,7 +539,6 @@ p {
     border: 1px solid var(--color-main-dark);
     font: inherit;
     -webkit-appearance: none;
-    
     outline:0;
     cursor:pointer;
     text-align: center;
@@ -532,6 +546,29 @@ p {
     font-size:0.8em
 }
 
+.button-sm {
+	display: inline-block;
+    background-color: var(--color-neutral-light);
+    color: var(--color-main-dark);
+    border: transparent;
+    font: inherit;
+    -webkit-appearance: none;
+    outline:0;
+    cursor:pointer;
+    text-align: left;
+    font-size:0.9em;
+    margin-right: 10px;
+}
+
+
+.button-sm:hover {
+	border-bottom: 1px solid var(--color-main-dark);
+}
+
+
+.button-sm:focus {
+	border-bottom: 1px solid var(--color-main-dark);
+}
 
 .form-button {
     display: inline-block;
@@ -546,8 +583,11 @@ p {
     cursor:pointer;
     text-align: center;
     transition: all .3s ease;
-
  }
+
+
+
+
 
 .form-button-etc:hover,
 .form-button:hover {
@@ -561,24 +601,23 @@ p {
  	background-color: var(--color-main-medium);
  }
 
-.hotdog {
- 	background-color: var(--color-neutral-light);
- 	border: 1px solid var(--color-main-dark);
- 	border-radius: 2em;
- 	padding: 0.5em 1.5em;
- 	display: flex;
- }
 
+.form-select-sort>select,
 .form-select>select {
- 	padding: 0.4em 1.2em;
- 	background-color: white;
+ 	padding-top: 0.4em;
+ 	padding-left: 0.4em;
+ 	padding-bottom: 0.4em;
+ 	width: 100%;
+ 	background-color: transparent;
  	border-radius: 0;
  	cursor: pointer;
+ 	border: 1px solid var(--color-main-dark);
+ 	color: var(--color-main-dark);
  }
 
  .select-quantity>select {
  	padding: 0.4em 1.2em;
- 	background-color: white;
+ 	background-color: transparent;
  	border-radius: 1em;
  	cursor: pointer;
  }
@@ -587,12 +626,20 @@ p {
 .form-select {
 	position: relative;
 	width: 90%;
-	border: 2px solid var(--color-main-dark);
+	border: 1px solid var(--color-main-dark);
+
 }
 .form-select.cart {
 	position: relative;
 	width: initial;
 	border: 1px solid var(--color-main-dark);
+}
+
+.form-select-sort {
+	position: relative;
+	width: 130px;
+	
+
 }
 
 .select-quantity {
@@ -670,7 +717,7 @@ p {
 }
 
 ::placeholder {
-	font-size: 13px;
+	font-size: 15px;
 	color: #ADADAD;
 }
 
