@@ -58,34 +58,42 @@ HTML;
 
 
 function cartTotals() {
-	$cart = getCartItems();
+$cart = getCartItems();
 
-	$cartprice = array_reduce($cart,function($r,$o){return $r + $o->total;},0);
+$cartprice = array_reduce($cart,function($r,$o){return $r + $o->total;},0);
 
-	$pricefixed = number_format($cartprice,2,'.','');
-	$taxfixed = number_format($cartprice*0.0725,2,'.','');
-	$taxedfixed = number_format($cartprice*1.0725,2,'.','');
+$pricefixed = number_format($cartprice,2,'.','');
+$taxfixed = number_format($cartprice*0.0725,2,'.','');
+$taxedfixed = number_format($cartprice*1.0725,2,'.','');
 
-	return <<<HTML
-	<div class="card-section display-flex">
-		<div class="flex-stretch"><strong>Sub Total</strong></div>
-		<div class="flex-none">&dollar;$pricefixed</div>
-	</div>
+return <<<HTML
+<div class="card-section display-flex">
+	<div class="flex-stretch"><strong>Sub Total</strong></div>
+	<div class="flex-none">&dollar;$pricefixed</div>
+</div>
 
-	<div class="card-section display-flex">
-		<div class="flex-stretch"><strong>Taxes</strong></div>
-		<div class="flex-none">&dollar;$taxfixed</div>
-	</div>
+<div class="card-section display-flex">
+	<div class="flex-stretch"><strong>Taxes</strong></div>
+	<div class="flex-none">&dollar;$taxfixed</div>
+</div>
 
-	<div class="card-section display-flex">
-		<div class="flex-stretch"><strong>Total</strong></div>
-		<div class="flex-none">&dollar;$taxedfixed</div>
-	</div>
+<div class="card-section display-flex">
+	<div class="flex-stretch"><strong>Total</strong></div>
+	<div class="flex-none">&dollar;$taxedfixed</div>
+</div>
 
-	<div class="card-section">
-		<a href="notes/product_checkout.php" class="form-button-etc">Checkout</a>
-	</div>
-	HTML;
+<div class="card-section">
+	<a href="notes/product_checkout.php" class="form-button-etc">Checkout</a>
+</div>
+HTML;
+}
+
+
+function recommendedProducts($a) {
+$products = array_reduce($a,'productListTemplate');
+echo <<<HTML
+<div class="grid gap productlist">$products</div>
+HTML;
 }
 
 

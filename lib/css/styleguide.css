@@ -64,6 +64,11 @@ p {
 	color: var(--color-main-dark);
 }
 
+span,
+strong {
+	color: var(--color-main-dark);
+}
+
 .title-center{
 	position: absolute;
   	top: 50%;
@@ -264,11 +269,13 @@ p {
 	padding: 1em;
 	overflow: hidden;
 	position: relative;
+
 }
 
 	.card.soft {
 		
 		box-shadow: rgba(0, 0, 0, 0) 0px 1px 4px;
+		
 	}
 
 		.card.soft.nav {
@@ -291,6 +298,12 @@ p {
 		color:var(--color-white);
 	}
 
+	.card.soft2 {
+
+		background-color: white;
+		border: 1px solid var(--color-main-dark);
+		color:var(--color-main-dark);
+	}
 
 	.card.flat {
 		padding: 0;
@@ -507,12 +520,13 @@ p {
  }
 
  .form-label {
- 	margin-bottom: 15px;
+ 	/*margin-bottom: 10px;*/
  	font-family: "Degular", sans-serif;
  	font-size: 16px;
+ 	font-weight: 600;
     color: var(--color-main-dark);
-    font-weight: 300;
     display: block;
+    /*display: stretch;*/
     width: 100%;
  }
 
@@ -544,6 +558,36 @@ p {
     text-align: center;
     transition: all .3s ease;
     font-size:0.8em
+}
+
+.form-button-etc2 {
+	display: inline-block;
+    background-color: var(--color-main-light);
+    color: var(--color-main-dark);
+    border: 1px solid var(--color-main-dark);
+    text-decoration: none;
+    padding: 10px 18px;
+    font: inherit;
+    -webkit-appearance: none;
+    min-width: 230px;
+    outline:0;
+    cursor:pointer;
+    text-align: center;
+}
+
+.form-button-etc3 {
+	display: inline-block;
+    background-color: var(--color-neutral-light);
+    color: var(--color-main-dark);
+    border: 1px solid var(--color-main-dark);
+    text-decoration: none;
+    padding: 10px 18px;
+    font: inherit;
+    -webkit-appearance: none;
+    min-width: 230px;
+    outline:0;
+    cursor:pointer;
+    text-align: center;
 }
 
 .button-sm {

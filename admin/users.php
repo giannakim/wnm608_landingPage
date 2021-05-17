@@ -140,7 +140,6 @@ HTML;
 
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -181,16 +180,16 @@ HTML;
 			<h2>User List</h2>
 
 			<nav class="nav">
-				<ul>
-					<?php
+			<ul>
+			<?php
 
-					for($i=0;$i<count($users);$i++){
-						echo "<li>
-							<a href='admin/users.php?id=$i'>{$users[$i]->name}</a>
-						</li>";
-					}
+			for($i=0;$i<count($users);$i++){
+				echo "<li>
+					<a href='admin/users.php?id=$i'>{$users[$i]->name}</a>
+				</li>";
+			}
 
-					?>
+			?>
 
 				</ul>
 			</nav>
