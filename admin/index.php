@@ -38,7 +38,7 @@ switch(@$_GET['action']) {
         WHERE `id`=?
         ");
         $statement->execute([
-        	$_POST['name'],
+        	$_POST['product-name'],
             $_POST['price'],
             $_POST['category'],
             $_POST['description'],
@@ -64,12 +64,13 @@ switch(@$_GET['action']) {
         (?,?,?,?,?,?,NOW(),NOW())
         ");
         $statement->execute([
-            $_POST['name'],
-            $_POST['price'],
-            $_POST['category'],
-            $_POST['description'],
-            $_POST['thumbnail'],
-            $_POST['images']
+            $_POST["product-name"],
+			$_POST["price"],
+			$_POST["category"],
+			$_POST["description"],
+			$_POST["thumbnail"],
+			$_POST["images"]
+				
         ]);
         $id = $conn->lastInsertId();
 
