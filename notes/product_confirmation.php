@@ -1,6 +1,7 @@
 <?php
 
 include_once "../lib/php/functions.php";
+include_once "../parts/templates.php";
 resetCart();
 ?>
 <!DOCTYPE html>
@@ -19,13 +20,15 @@ resetCart();
 	<?php include "../parts/navbar.php"; ?>
 
 	<div class="container">
-		<form class="container">
-		<div class="card hard">
-			<h2>Thank you for your purchase</h2>
-			<p>Empty</p>
-			<p><a href="notes/product_list.php">Continue Shopping</a></p>
+		<div class="card dark">
+			<div class="product-name">Gianna! Thank you for your purchase!</div>
+			
+			
 		</div>
-		</form>
+		
+		<div class="display-flex">
+			<div class="flex-none form-button-etc3"><a href="notes/product_list.php">Continue Shopping</a></div>
+		</div>
 	</div>
 
 

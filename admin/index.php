@@ -2,94 +2,90 @@
 
 
 include "../lib/php/functions.php";
-
+include "../parts/templates.php";
 
 
 
 $empty_product = (object)[
-	"name"=>"tokyo4564",
-	"description"=>"From 4564 street in Tokyo, Japan",
-	"price"=>"38",
-	"category"=>"fragrance1",
-	"thumbnail"=>"4564.jpg",
-	"images"=>"main4564.jpg"
+    "name"=>"tokyo4564",
+    "description"=>"From 4564 street in Tokyo, Japan",
+    "price"=>"38",
+    "category"=>"fragrance1",
+    "thumbnail"=>"4564.jpg",
+    "images"=>"main4564.jpg"
 ];
-
-
 
 
 
 //LOGIC
 
 
+
+$conn = makePDOConn();
 try {
-	$conn = makePDOConn();
-	switch($_GET['action']) {
-		case "update":
-			$statement = $conn->prepare("UPDATE
-				`products`
-				SET
-					`name`=?,
-					`price`=?,
-					`category`=?,
-					`description`=?,
-					`thumbnail`=?,
-					`images`=?,
-					`date-modify`=NOW()
-				WHERE `id`=?
-				");
-			$statement->execute([
-				$_POST['product-name'],
-				$_POST['product-price'],
-				$_POST['product-category'],
-				$_POST['product-description'],
-				$_POST['product-thumbnail'],
-				$_POST['product-images'],
-				$_GET['id']
-			]);
-			header("location:{$_SERVER['PHP_SELF']}?id={$_GET['id']}");
-			break;
-		case "create":
+switch(@$_GET['action']) {
+    case "update":
+        $statement = $conn->prepare("UPDATE
+        `products`
+        SET
+        	`name`=?,
+        	`price`=?,
+        	`category`=?,
+        	`description`=?,
+        	`thumbnail`=?,
+        	`images`=?,
+        	`date-modify`=NOW()
+        WHERE `id`=?
+        ");
+        $statement->execute([
+        	$_POST['name'],
+            $_POST['price'],
+            $_POST['category'],
+            $_POST['description'],
+            $_POST['thumbnail'],
+            $_POST['images'],
+            $_GET['id']
+        ]);
+		header("location:{$_SERVER['PHP_SELF']}?id={$_GET['id']}");
+		break;
+    case "create":
+        $statement = $conn->prepare("INSERT INTO
+        `products`(
+            `name`,
+            `price`,
+            `category`,
+            `description`,
+            `thumbnail`,
+            `images`,
+            `date-create`,
+            `date-modify`
+        )
+        VALUES
+        (?,?,?,?,?,?,NOW(),NOW())
+        ");
+        $statement->execute([
+            $_POST['name'],
+            $_POST['price'],
+            $_POST['category'],
+            $_POST['description'],
+            $_POST['thumbnail'],
+            $_POST['images']
+        ]);
+        $id = $conn->lastInsertId();
 
+        header("location:{$_SERVER['PHP_SELF']}?id=$id");
+        break;
+    case "delete":
+        $statement = $conn->prepare("DELETE FROM `products` WHERE id=?");
+        $statement->execute([$_GET['id']]);
 
-			$statement = $conn->prepare("INSERT INTO
-				`products`
-				(
-					`name`,
-					`price`,
-					`category`,
-					`description`,
-					`thumbnail`,
-					`images`,
-					`date-create`,
-					`date-modify`
-				)
-				VALUES (?,?,?,?,?,?,NOW(),NOW())
-				");
-			$statement->execute([
-				$_POST['product-name'],
-				$_POST['product-price'],
-				$_POST['product-category'],
-				$_POST['product-description'],
-				$_POST['product-thumbnail'],
-				$_POST['product-images']
-			]);
-			$id = $conn->lastInsertId();
-			header("location:{$_SERVER['PHP_SELF']}?id=$id");
-			break;
-		case "delete":
-			$statement = $conn->prepare("DELETE FROM `products` WHERE id=?");
-			$statement->execute([$_GET['id']]);
-			
-			header("location:{$_SERVER['PHP_SELF']}");
-			break;
-	}
-} catch(PDOException $e) {
-	die($e->getMessage());
+        header("location:{$_SERVER['PHP_SELF']}");
+        break;
 }
 
-
-
+}catch(PDOException $e) {
+   die($e->getMessage());
+}
 
 
 
@@ -105,7 +101,7 @@ try {
 // TEMPLATES
 
 function productListItem($r,$o) {
-return $r.<<<HTML
+return $r . <<<HTML
 <div class="card soft2">
 	<div class="display-flex">
 		<div class="flex-none images-thumbs"><img src='img/thumbnail/$o->thumbnail'></div>
@@ -126,7 +122,7 @@ HTML;
 
 function showProductPage($o) {
 
-$id = $_GET['id'];
+
 $addoredit = $id == "new" ? "Add" : "Edit";
 $createorupdate = $id == "new" ? "create" : "update";
 $images = array_reduce(explode(",", $o->images),function($r,$o){return $r."<img src='img/thumbnail/$o'>";});
@@ -289,7 +285,7 @@ HTML;
 				
 				<?php
 
-				$result = makeQuery(makeConn(),"SELECT * FROM `products`");
+				$result = makeQuery(makeConn(),"SELECT * FROM `products` ORDER BY `date_create`DESC");
 
 				echo array_reduce($result,'productListItem');
 

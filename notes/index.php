@@ -14,7 +14,7 @@ include_once "../parts/templates.php";
 	<?php include "../parts/meta.php"; ?>
 
 </head>
-<body>
+<body class="flush">
 	
 	<?php include "../parts/navbar.php"; ?>
 
@@ -22,14 +22,14 @@ include_once "../parts/templates.php";
 	<div class="container">
 		
 			<div class="view-window" style="background-image: url('img/main.jpg');">
-					<div class="title-center">Scents inspired by Seoul, a dynamic city</div>
+					<div class="title-center"></div>
 			</div>
 		
 		
 			<div class="col-xs-12 col-md-3">
-				<figure class="figure product newItem">
-					<h1>New Product</h1>
-				</figure>
+				
+					<h2>New Product</h2>
+			
 
 				
 				<?php 

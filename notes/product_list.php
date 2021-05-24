@@ -26,16 +26,16 @@ include_once "../parts/templates.php";
 		<div class="card medium">
 			<h2>PRODUCT LIST</h2>
 
-			<div class="form-control">
+			<div class="card medium form-control" style="float: right;">
 				<form class="hotdog" id="product-search">
 					<input type="search" placeholder="Search">
 				</form>
 			</div>
 		
 			
-			<div class="form-control">
+			<div class="form-control" style="clear: both;">
 				<div class="card medium">
-				<div class="display-flex">
+				<div class="display-flex flex-wrap">
 					<div class="flex-stretch display-flex">
 						<div class="flex-none">
 							<button data-filter="category" data-value="" type="button" class="button-sm">All</button>

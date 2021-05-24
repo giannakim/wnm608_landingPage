@@ -1,6 +1,7 @@
 <?php 
 
 include_once "../lib/php/functions.php";
+include_once "../parts/templates.php";
 
 $product = makeQuery(makeConn(),"SELECT * FROM `products` WHERE `id` =".$_GET['id'])[0];
 
@@ -51,13 +52,13 @@ $image_elements = array_reduce($images,function($r,$o){
 
 						<input type="hidden" name="product-id" value="<?= $product->id ?>">
 
-							<div class="card-section">
-								<h2 class="product-name"><?= $product->name ?></h2>
+							<div class="card-section2">
+								<div class="product-name"><?= $product->name ?></div>
 								<div class="product-price">&dollar;<?= $product->price ?></div>
 							</div>
 						
 
-							<div class="card-section">
+							<div class="card-section2">
 									<label for="product-amount" class="form-label">Amount</label>
 									<div class="form-select" id="product-amount">
 										<select id="product-amount" name="product-amount">
@@ -75,20 +76,20 @@ $image_elements = array_reduce($images,function($r,$o){
 									</div>
 							</div>
 
-							<div class="card-section">
+							<div class="card-section2">
 								<label for="product-color" class="form-label">Color</label>
 								<div class="form-select">
 									<select id="product-color" name="product-color">
-										<option>red</option>
-										<option>green</option>
+										<option>1.5oz</option>
+										<option>2.5oz</option>
 									</select>
 								</div>
 							</div>
 
-						<div class="card-section">
+						<div class="card-section2">
 							<input type="submit" class="form-button" value="Add To Cart">
 							<br><br>
-							
+							<div class="line"></div>
 							<p><?= $product->description ?></p>
 						</div>
 					</form>

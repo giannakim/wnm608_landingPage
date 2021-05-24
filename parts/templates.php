@@ -81,10 +81,6 @@ return <<<HTML
 	<div class="flex-stretch"><strong>Total</strong></div>
 	<div class="flex-none">&dollar;$taxedfixed</div>
 </div>
-
-<div class="card-section">
-	<a href="notes/product_checkout.php" class="form-button-etc">Checkout</a>
-</div>
 HTML;
 }
 
@@ -95,6 +91,7 @@ echo <<<HTML
 <div class="grid gap productlist">$products</div>
 HTML;
 }
+
 
 
 
